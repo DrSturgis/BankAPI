@@ -19,7 +19,8 @@ public class CustomerService {
     }
 
     public List<Customer> listCostumers(){
-        return customerRepository.findAll();
+        List<Customer> customers = customerRepository.findAll();
+        return customers;
     }
 
     public Optional<Customer> findById(Long id){

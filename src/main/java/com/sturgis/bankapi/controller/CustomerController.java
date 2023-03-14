@@ -27,7 +27,6 @@ public class CustomerController {
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     public List<Customer> listCustomer(){
-        System.out.println("aqui");
         return customerService.listCostumers();
     }
 

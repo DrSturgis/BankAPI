@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "tb_customer")
 public class Customer {
 
     @Id
@@ -28,6 +29,9 @@ public class Customer {
     @Column(name = "birth")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate birth;
+    @OneToOne
+    @JoinColumn(name = "tb_account")
+    private Account idAcc;
 
 
 }

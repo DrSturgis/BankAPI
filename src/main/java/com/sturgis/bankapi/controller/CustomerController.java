@@ -4,11 +4,13 @@ import com.sturgis.bankapi.entity.Customer;
 import com.sturgis.bankapi.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,11 +46,33 @@ public class CustomerController {
         }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found."));
     }
 
-    @PostMapping("/update/{id}")
+/*
     public void updateCustomer(@PathVariable("id") Long id, @RequestBody Customer customer){
         customerService.findById(id).map(customerBase -> {
             customerService.newCustomer(customer);
             return Void.TYPE;
         }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found."));
+    }*/
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateCustomer(@PathVariable("id") Long id, Customer customer){
+        Optional<Customer> cust = customerService.findById(id);
+        Customer c = cust.get();
+        if(customer.getName() != null){
+            c.setName(customer.getName());
+            System.out.println(c.getName());
+        }
+        if(customer.getEmail() != null){
+            c.setEmail(customer.getEmail());
+            System.out.println(c.getEmail());
+        }
+        if (customer.getCpf() != null || customer.getBirth() != null){
+            return ResponseEntity.badRequest().body("You can't change CPF and Birth.");
+        }else {
+            customerService.newCustomer(c);
+            return ResponseEntity.ok(c);
+        }
+
     }
+
 }

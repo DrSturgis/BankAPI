@@ -21,7 +21,9 @@ public class Account {
     @Column(name = "balance")
     private double balance;
     @OneToOne
-    @JoinColumn(name = "tb_customer")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
+    @Column(name = "typeAcc")
+    private String typeAcc;
 
 }

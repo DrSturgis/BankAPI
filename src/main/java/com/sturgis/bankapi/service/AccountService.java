@@ -48,6 +48,20 @@ public class AccountService {
         return accountRepository.findById(id);
     }
 
+    public boolean accountExists(Long id){
+        Optional<Account> account = this.findAccountById(id);
+        if (account.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public Optional<Account> statement(Long id){
+
+        return this.findAccountById(id);
+    }
+
     public double deposit(double value, Long id){
         double balance;
         //accountRepository.save(id, balance );

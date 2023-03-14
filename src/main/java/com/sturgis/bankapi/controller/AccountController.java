@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,29 @@ public class AccountController {
     @GetMapping("/list")
     public List<Account> listAccounts(){
         return accountService.listAccount();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteAccountById(@PathVariable("id") Long id){
+        Optional<Account> opt = accountService.findAccountById(id);
+        if (opt.isEmpty()){
+            return "Account does not exist";
+        }else{
+            accountService.deleteAccountById(id);
+            return "Account deleted";
+        }
+
+    }
+
+    @GetMapping("/{id}/statement")
+    public ResponseEntity<?> statement(@PathVariable("id") Long id){
+        boolean exists = accountService.accountExists(id);
+        if( exists == true){
+            Account account = accountService.statement(id).get();
+            return ResponseEntity.ok(account);
+        }else {
+            return ResponseEntity.badRequest().body("Account ID does not exist");
+        }
 
     }
 

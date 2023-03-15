@@ -5,12 +5,10 @@ import com.sturgis.bankapi.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,14 +43,6 @@ public class CustomerController {
             return Void.TYPE;
         }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found."));
     }
-
-/*
-    public void updateCustomer(@PathVariable("id") Long id, @RequestBody Customer customer){
-        customerService.findById(id).map(customerBase -> {
-            customerService.newCustomer(customer);
-            return Void.TYPE;
-        }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found."));
-    }*/
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateCustomer(@PathVariable("id") Long id, Customer customer){

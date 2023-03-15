@@ -1,6 +1,5 @@
 package com.sturgis.bankapi.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sturgis.bankapi.entity.Account;
 import com.sturgis.bankapi.entity.Customer;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +40,7 @@ public class AccountController {
         return accountService.listAccount();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}/delete")
     public String deleteAccountById(@PathVariable("id") Long id){
         Optional<Account> opt = accountService.findAccountById(id);
         if (opt.isEmpty()){
@@ -64,6 +62,22 @@ public class AccountController {
             return ResponseEntity.badRequest().body("Account ID does not exist");
         }
 
+    }
+
+    @PostMapping("/{id}/deposit")
+    public ResponseEntity<?> deposit(double value, @PathVariable("id") Long id){
+
+        return accountService.deposit(value, id);
+    }
+
+    @PostMapping("/{id}/withdraw")
+    public ResponseEntity<?> withdraw(double value, @PathVariable("id") Long id){
+        return accountService.withdraw(value, id);
+    }
+
+    @PostMapping("/{id}/transfer")
+    public ResponseEntity<?> transfer(double value, @PathVariable("id") Long idTransference, Long idRcv){
+        return accountService.transfer(value, idTransference, idRcv);
     }
 
 }

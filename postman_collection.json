@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "7bc554d7-beaf-411a-924f-e8efd8ad0612",
+		"name": "bank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26030275"
+	},
+	"item": [
+		{
+			"name": "ListCustomer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"list"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Matheu",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "matheu@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "cpf",
+							"value": "12635471623",
+							"disabled": true
+						},
+						{
+							"key": "birth",
+							"value": "18/05/2000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListCustomerById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Matheu",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "matheu@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "cpf",
+							"value": "12635471623",
+							"disabled": true
+						},
+						{
+							"key": "birth",
+							"value": "18/05/2000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NewCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/new?name=armando&email=arma@gmail.com&cpf=12342345&birth=12/04/1999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"new"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "armando"
+						},
+						{
+							"key": "email",
+							"value": "arma@gmail.com"
+						},
+						{
+							"key": "cpf",
+							"value": "12342345"
+						},
+						{
+							"key": "birth",
+							"value": "12/04/1999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCustomer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/delete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCustomer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"update",
+						"1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "armando",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "arma@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "cpf",
+							"value": "12342345",
+							"disabled": true
+						},
+						{
+							"key": "birth",
+							"value": "12/04/1999",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "newAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/new?id=5&type=CC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"new"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						},
+						{
+							"key": "type",
+							"value": "CC"
+						},
+						{
+							"key": "balance",
+							"value": "100",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListAccounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAccount",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/delete/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"delete",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Statement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/2/statement",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"2",
+						"statement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DepositAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/1/deposit?value=5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"1",
+						"deposit"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "withdrawAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/1/withdraw?value=4900",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"1",
+						"withdraw"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "4900"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TransferAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/1/transfer?value=100&receiver=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"1",
+						"transfer"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "100"
+						},
+						{
+							"key": "receiver",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListAllTransfer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/transfer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listTransferSenderByIdAccount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/transfer/sent/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfer",
+						"sent",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listTransferReceiverByIdAccount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/transfer/receive/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfer",
+						"receive",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

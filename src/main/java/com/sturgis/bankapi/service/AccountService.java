@@ -90,9 +90,9 @@ public class AccountService {
 
     }
 
-    public ResponseEntity<?> transfer(double value, Long idTransference, Long idReceive){
-        if (this.accountExists(idTransference) && this.accountExists(idReceive)){
-            Account tranfer = this.findAccountById(idTransference).get();
+    public ResponseEntity<?> transfer(double value, Long sender, Long idReceive){
+        if (this.accountExists(sender) && this.accountExists(idReceive)){
+            Account tranfer = this.findAccountById(sender).get();
             Account receive = this.findAccountById(idReceive).get();
             if (tranfer.getBalance() >= value){
                 tranfer.setBalance(tranfer.getBalance() - value);

@@ -5,6 +5,7 @@ import com.sturgis.bankapi.entity.Account;
 import com.sturgis.bankapi.entity.Customer;
 import com.sturgis.bankapi.service.AccountService;
 import com.sturgis.bankapi.service.CustomerService;
+import com.sturgis.bankapi.service.HistoryTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,7 @@ public class AccountController {
     @Autowired
     private CustomerService customerService;
     @Autowired
-    private ObjectMapper objectMapper;
-
+    private HistoryTransferService historyTransferService;
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
@@ -76,8 +76,10 @@ public class AccountController {
     }
 
     @PostMapping("/{id}/transfer")
-    public ResponseEntity<?> transfer(double value, @PathVariable("id") Long idTransference, Long idRcv){
-        return accountService.transfer(value, idTransference, idRcv);
+    public ResponseEntity<?> transfer(double value, @PathVariable("id") Long idTransference, Long receiver){
+        ResponseEntity<?> returnTransfer = accountService.transfer(value, idTransference, receiver);
+        historyTransferService.newTransfer(idTransference, value, receiver);
+        return returnTransfer;
     }
 
 }
